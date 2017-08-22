@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <title>Random Word</title>
+    </head>
+    <body>
+    <div class="container">
+        <h2>Random Word Generator</h2>
+        <p>Random Word (attempt #{{ request.session.count }})</p>
+        <h3>{{ request.session.random }}</h3>
+        <form action="/process" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Generate">
+        </form>
+        <form action="/reset" method="POST">
+            {% csrf_token %}            
+            <input type="submit" value="Reset">
+        </form>
+    </div>
+    </body>
+</html>
